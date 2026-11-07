@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Secret dan konfigurasi lokal
+.env
+.env.*
+!.env.example
+secret.key
+
+# Data dan log (data bengkel tidak masuk Git)
+*.db
+*.sqlite3
+*.log
+app.py.bak*
+
+# Sistem operasi
+.DS_Store
+Thumbs.db
