@@ -1,22 +1,62 @@
 # Inventaris Bengkel Motor
 
-Aplikasi pencatatan inventaris suku cadang dan stok untuk bengkel motor.
+Cloud Computing — PTI 2802  
+Pertemuan 3 — Project Inception
 
-- Nama: Rizki Hermawan
-- Kelas: PTI 2A
+## Author
+Rizki Hermawan / 25832073002 / PTI 2A
 
-## Fitur Utama
-- Pencatatan suku cadang (nama, kategori, harga, stok)
-- Pencatatan barang masuk dan keluar
-- Peringatan stok menipis
+## Problem
+Pemilik dan petugas bengkel motor kesulitan mencatat dan mencari data suku cadang pada pencatatan manual.
 
-## Struktur Repository
-- `inventaris.service`: unit systemd untuk menjalankan aplikasi
-- `docs/requirements.md`: kebutuhan fungsional dan non-fungsional
-- `docs/architecture.md`: arsitektur sistem
-- `docs/deployment.md`: panduan deployment
-- `docs/adr/`: catatan keputusan arsitektur
-- `docs/evidence/m03/`: bukti pengerjaan modul M03
+## Target Users
+Pemilik dan petugas bengkel motor. Setiap bengkel memiliki akun sendiri.
 
-## Catatan
-Repository ini bersifat publik. Tidak ada password, secret, atau token yang disimpan di dalamnya.
+## Features M03
+- baseline application: daftar akun bengkel, login, dan CRUD barang per bengkel
+- health endpoint
+- VPS deployment
+
+## Architecture
+
+```mermaid
+flowchart LR
+    U[User] --> C[Caddy]
+    C --> G[Gunicorn]
+    G --> F[Flask]
+    F --> D[(SQLite)]
+```
+
+## Infrastructure
+- Ubuntu Server 24.04
+- 2 vCPU
+- 1.9Gi RAM
+- 19G disk
+- Caddy
+- Gunicorn
+
+## Public Endpoint
+`http://103.193.177.228/`
+
+## Health Check
+`GET /health`
+
+## Deployment
+See `docs/deployment.md`.
+
+## Security
+- key-only SSH
+- root SSH disabled
+- UFW enabled
+- backend loopback-only
+- tidak ada secret di repository
+- password pengguna disimpan dalam bentuk hash
+
+## Current Limitations
+- HTTP only
+- database SQLite berbasis file
+- no container
+- manual deployment
+
+## Roadmap
+M04 DNS/HTTPS, M05 Data, M06 Container, M07 IaC, M09 CI/CD

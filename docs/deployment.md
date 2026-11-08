@@ -1,18 +1,26 @@
-# Deployment
+# Manual Deployment M03
 
-## Prasyarat
-- Server Linux dengan systemd
-- Git dan deploy key yang sudah terpasang
+## Application Path
+`/home/rizki06/inventaris-bengkel-motor`
 
-## Langkah
-1. Ambil kode: `git clone git@github.com:rizkiherrmawan-ship-it/cc-25832073002-inventaris-bengkel-motor.git`
-2. Salin unit service: `sudo cp inventaris.service /etc/systemd/system/`
-3. Muat ulang systemd: `sudo systemctl daemon-reload`
-4. Aktifkan dan jalankan: `sudo systemctl enable --now inventaris`
-5. Periksa status: `systemctl status inventaris`
+## Service
+`inventaris.service`
 
-## Pembaruan
-`git pull` lalu `sudo systemctl restart inventaris`.
+## Backend
+`127.0.0.1:8000`
 
-## Keamanan
-Jangan menyimpan password, secret, atau token di repository.
+## Public Endpoint
+`http://103.193.177.228/`
+
+## Update Procedure
+
+```bash
+cd ~/inventaris-bengkel-motor
+git pull
+source venv/bin/activate
+python -m pip install -r requirements.txt
+sudo systemctl restart inventaris
+sudo systemctl status inventaris --no-pager
+curl -fsS http://127.0.0.1:8000/health
+curl -fsS http://127.0.0.1/health
+```
