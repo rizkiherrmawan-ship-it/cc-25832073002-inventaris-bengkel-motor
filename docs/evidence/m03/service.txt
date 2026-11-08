@@ -1,0 +1,21 @@
+● inventaris.service - Inventaris Bengkel Motor (Flask via Gunicorn)
+     Loaded: loaded (/etc/systemd/system/inventaris.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2026-11-08 05:51:53 UTC; 58min ago
+   Main PID: 692 (gunicorn)
+      Tasks: 4 (limit: 2315)
+     Memory: 40.3M (peak: 40.8M)
+        CPU: 1.885s
+     CGroup: /system.slice/inventaris.service
+             ├─692 /home/rizki06/inventaris-bengkel-motor/venv/bin/python3 /home/rizki06/inventaris-bengkel-motor/venv/bin/gunicorn --workers 1 --threads 2 --bind 127.0.0.1:8000 --timeout 30 --access-logfile - --error-logfile - app:app
+             └─755 /home/rizki06/inventaris-bengkel-motor/venv/bin/python3 /home/rizki06/inventaris-bengkel-motor/venv/bin/gunicorn --workers 1 --threads 2 --bind 127.0.0.1:8000 --timeout 30 --access-logfile - --error-logfile - app:app
+
+Nov 08 05:51:56 rizkihermawan-srv gunicorn[692]: [2026-11-08 05:51:55 +0000] [692] [INFO] Using worker: gthread
+Nov 08 05:51:56 rizkihermawan-srv gunicorn[755]: [2026-11-08 05:51:55 +0000] [755] [INFO] Booting worker with pid: 755
+Nov 08 05:51:56 rizkihermawan-srv gunicorn[692]: [2026-11-08 05:51:55 +0000] [692] [INFO] Control socket listening at /home/rizki06/.gunicorn/gunicorn.ctl
+Nov 08 06:03:04 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:03:04 +0000] "GET /health HTTP/1.1" 200 16 "-" "curl/8.5.0"
+Nov 08 06:03:04 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:03:04 +0000] "GET /health HTTP/1.0" 200 16 "-" "curl/8.5.0"
+Nov 08 06:10:12 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:10:12 +0000] "GET /health HTTP/1.0" 200 16 "-" "curl/8.21.0"
+Nov 08 06:33:41 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:33:41 +0000] "GET / HTTP/1.0" 302 199 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0"
+Nov 08 06:33:42 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:33:41 +0000] "GET /login HTTP/1.0" 200 868 "http://<PUBLIC_IP>:80/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0"
+Nov 08 06:33:42 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:33:42 +0000] "GET /favicon.ico HTTP/1.0" 404 207 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0"
+Nov 08 06:42:35 rizkihermawan-srv gunicorn[755]: 127.0.0.1 - - [08/Nov/2026:06:42:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "curl/8.5.0"
